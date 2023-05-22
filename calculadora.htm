@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <h1>Calculadora</h1>
+    <label for="formula">Ingresa la fórmula:</label>
+    <input type="text" id="formula">
+    <button onclick="calcular()">Calcular</button>
+    <br>
+    <br>
+    <label for="resultado">Resultado:</label>
+    <input type="text" id="resultado" readonly>
+    <script>
+      function calcular() {
+        // Obtiene el valor del cuadro de texto de la fórmula
+        var formula = document.getElementById("formula").value;
+
+        // Intenta evaluar la fórmula
+        try {
+          var formula2 = formula;
+          formula2 = formula2.replace('sin', 'Math.sin');
+          formula2 = formula2.replace('cos', 'Math.cos');
+          formula2 = formula2.replace('tan', 'Math.tan');
+          var resultado = eval(formula2);
+          document.getElementById("resultado").value = resultado;
+        } catch (error) {
+          // Si hay un error, muestra un mensaje
+          document.getElementById("resultado").value = "Error en la fórmula";
+        }
+      }
+    </script>
+  </body>
+</html>
